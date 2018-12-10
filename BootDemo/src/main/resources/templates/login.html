@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+</head>
+<body>
+	<h1>Login</h1>
+
+	<!-- /login?error=true -->
+	<div th:if="${#request.getParameter('error') == 'true'}"
+		style="color: red; margin: 10px 0px;">
+		<span th:utext="${msg}"></span>
+	</div>
+
+	<h3>Enter user name and password:</h3>
+	<form name='f' th:action="@{/login}" method='POST'>
+		<table>
+			<tr>
+				<td>TenantId:</td>
+				<td><input type='text' id="tenantId" name='tenantId' value=''></td>
+			</tr>
+			<tr>
+				<td>User:</td>
+				<td><input type='text' name='username' value=''></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type='password' name='password' /></td>
+			</tr>
+			<tr>
+				<td><input name="submit" type="submit" value="submit" /></td>
+			</tr>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</table>
+	</form>
+
+	<br>
+</body>
+
+</html>
